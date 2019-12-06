@@ -1,0 +1,61 @@
+<html>
+<head>
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/Touch.js"></script>
+    <script src="./js/GridGenerator.js"></script>
+    <script src="./js/main.js">
+    </script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle ui-btn ui-shadow ui-corner-all" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle ui-link" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <li class="menu-button" id="clear_button"><a href="#" class="ui-link">  Clear</a></li>
+        <li class="menu-button" id="wall_button"><a href="#" class="ui-link">  Wall</a></li>
+        <li class="menu-button" id="path_button"><a href="#" class="ui-link">   Clear Wall</a></li>
+        <li class="menu-button" id="start_button"><a href="#" class="ui-link">  Set Starting Point</a></li>
+        <li class="menu-button" id="end_button"><a href="#" class="ui-link">    Set Ending Point</a></li>
+        <li class="menu-button" id="find_path"><a href="#" class="ui-link">    Add Vertices and Edges</a></li>
+        <li class="menu-button" id="prepare_graph_button"><a href="#" class="ui-link">    Run BFS</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="parent_div"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+        document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
+        </script>
+</html>

@@ -1,0 +1,18 @@
+{
+    "name"        : "bfs",
+    "version "    : "0.0.1",
+    "description" : "bfs search and shortest path demo",
+    "repository"  : {
+	"type" : "git",
+	"url"  : "git://github.com/mharoot/bfs.git"
+    },
+    "main"        : "app.js",
+    "scripts"     : {
+        "test" : "echo \"Error: no test specified"
+    },
+    "author"      : "Michael Harootoonyan",
+    "license"     : "MIT",
+    "dependencies":{
+        "express"   :"*"  
+    }
+}

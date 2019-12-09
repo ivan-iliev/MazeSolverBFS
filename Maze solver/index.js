@@ -18,9 +18,12 @@ function bfs(position, end) {
   var queue = [];
 
   matrix[position[0]][position[1]] = 3;
+  matrix[end[0]][end[1]] = 4;
+  
 
   
   queue.push([position]);
+  
 
   while (queue.length > 0) {
     var path = queue.shift();
@@ -31,30 +34,49 @@ function bfs(position, end) {
       [pos[0] - 1, pos[1]],
       [pos[0], pos[1] - 1]
     ];
+    
 
     for (var i = 0; i < direction.length; i++) {
+      
       if (direction[i][0] == end[0] && direction[i][1] == end[1]) {
         return path.concat([end]); 
+       
       }
       
       if (direction[i][0] < 0 || direction[i][0] >= matrix[0].length 
           || direction[i][1] < 0 || direction[i][1] >= matrix[0].length 
           || matrix[direction[i][0]][direction[i][1]] != 0) { 
+            
         continue;
       }
+     
 
-      matrix[direction[i][0]][direction[i][1]] = 2;
-      queue.push(path.concat([direction[i]])); 
+      
+      queue.push(path.concat([direction[i]]));
+     console.log(path);
+     
     }
-    
+   
   }
+           
+  
+}
+var path = bfs(start,end);
+  
   
 
-
+function runBFS(){
+  console.log(JSON.stringify(path));
+  console.log(path);
 }
 
-var path = bfs(start, end); 
-console.log(JSON.stringify(path));
+
+
+
+
+
+console.log(matrix);
+
 
 
 let size = 50;
@@ -74,7 +96,7 @@ let appendElement = (canvas , node ,matrix) => {
         blockRef.setAttribute('width' ,size.toString());
         blockRef.setAttribute('x' ,node.x*size);
         blockRef.setAttribute('y' ,node.y*size);
-        blockRef.setAttribute('fill' ,'red');
+        blockRef.setAttribute('fill' ,'black');
         canvas.appendChild(blockRef);
     }
 
@@ -89,13 +111,13 @@ let appendElement = (canvas , node ,matrix) => {
         
     }
 
-    if(matrix[node.y][node.x] === 2){
+    if(matrix[node.y][node.x] === 4){
         let blockRef = document.createElementNS('http://www.w3.org/2000/svg' , 'rect');
         blockRef.setAttribute('height' ,size.toString());
         blockRef.setAttribute('width' ,size.toString());
         blockRef.setAttribute('x' ,node.x*size);
         blockRef.setAttribute('y' ,node.y*size);
-        blockRef.setAttribute('fill' ,'grey');
+        blockRef.setAttribute('fill' ,'red');
         canvas.appendChild(blockRef);
     }
 
@@ -109,15 +131,9 @@ let appendElement = (canvas , node ,matrix) => {
       canvas.appendChild(blockRef);
   }
 
-    if(matrix[node.y][node.x] === path[path.length-1]){
-      let blockRe1 = document.createElementNS('http://www.w3.org/2000/svg' , 'rect');
-      blockRef.setAttribute('height' ,size.toString());
-      blockRef.setAttribute('width' ,size.toString());
-      blockRef.setAttribute('x' ,node.x*size);
-      blockRef.setAttribute('y' ,node.y*size);
-      blockRef.setAttribute('fill' ,'purple');
-      canvas.appendChild(blockRef);
-  }
+  
+
+    
     
 }
 

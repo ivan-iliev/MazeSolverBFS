@@ -19,7 +19,7 @@ function Graph() {
 
 function GridGenerator(parentID,height,width) {
   this.addVerticesSleepTime   = 163;
-  this.color                  = "grey";   
+  this.color                  = "black";   
   this.end                    = 0;       
   this.endingPoint            = null      
   this.found                  = false;    
@@ -80,18 +80,21 @@ this.setColor = function colorWall(color) {
   this.color = color;
 }
 
+this.setStart = function setStartingPoint() {
+    if (this.startingPoint != null) {
+        if(this.startingPoint.style.backgroundColor === "green")
+            this.startingPoint.style.backgroundColor = "";
+    }
+    this.color = "green";
+    this.start = 1;
+  }
+
+
 this.getColor = function getCurrentColor() {
   return this.color;
 }
 
-this.setStart = function setStartingPoint() {
-  if (this.startingPoint != null) {
-      if(this.startingPoint.style.backgroundColor === "green")
-          this.startingPoint.style.backgroundColor = "";
-  }
-  this.color = "green";
-  this.start = 1;
-}
+
 
 this.setEnd = function setEndingPoint() {
   if (this.endingPoint != null) {
@@ -103,12 +106,12 @@ this.setEnd = function setEndingPoint() {
 }
 
 this.removeStart = function removeStartingPointMode() {
-  this.color = "grey";
+  this.color = "black";
   this.start = 0;
 }
 
 this.removeEnd   = function removeEndingPointMode() {  
-  this.color = "grey";
+  this.color = "black";
   this.end   = 0;
 }
 
@@ -153,17 +156,17 @@ this.findOpenPathHelper = async function (td_elements, startPoint) {
   console.log("THREAD: "+this.thread_num);
   if (this.found)
   {
-      console.log("FOUND END!");
+    console.log("FOUND THE END");
       return 0;
   }
   var checkTop    = true;
   var checkBottom = true;
   var checkLeft   = true;
   var checkRight  = true;
-  var topColor    = "grey";
-  var bottomColor = "grey";
-  var leftColor   = "grey";
-  var rightColor  = "grey";
+  var topColor    = "black";
+  var bottomColor = "black";
+  var leftColor   = "black";
+  var rightColor  = "black";
 
   if ( (startPoint % this.width) == 0)
       checkLeft = false;
@@ -196,7 +199,7 @@ this.findOpenPathHelper = async function (td_elements, startPoint) {
   if (checkTop && topColor === "" )
   {
       console.log("path open above");
-      td_elements[startPoint - this.width].style.backgroundColor = "lightblue";
+      td_elements[startPoint - this.width].style.backgroundColor = "yellow";
       await this.sleep(sleepMS);
       this.findOpenPathHelper(td_elements,startPoint - this.width);
 
@@ -205,7 +208,7 @@ this.findOpenPathHelper = async function (td_elements, startPoint) {
   if (checkBottom && bottomColor === "" )
   {
       console.log("path open below");
-      td_elements[startPoint + this.width].style.backgroundColor = "lightblue";
+      td_elements[startPoint + this.width].style.backgroundColor = "yellow";
       await this.sleep(sleepMS);
       this.findOpenPathHelper(td_elements,startPoint + this.width);
   }
@@ -213,7 +216,7 @@ this.findOpenPathHelper = async function (td_elements, startPoint) {
   if (checkLeft && leftColor === "" )
   {
       console.log("path open left");
-      td_elements[startPoint - 1].style.backgroundColor = "lightblue";
+      td_elements[startPoint - 1].style.backgroundColor = "yellow";
       await this.sleep(sleepMS);
       this.findOpenPathHelper(td_elements,startPoint - 1);
   }
@@ -221,14 +224,14 @@ this.findOpenPathHelper = async function (td_elements, startPoint) {
   if (checkRight && rightColor === "" )
   {
       console.log("path open right");
-      td_elements[startPoint + 1].style.backgroundColor = "lightblue";
+      td_elements[startPoint + 1].style.backgroundColor = "yellow";
       await this.sleep(sleepMS);
       this.findOpenPathHelper(td_elements,startPoint + 1);
   }
 
-  if (topColor === "grey" && bottomColor === "grey" && leftColor ==="grey" && rightColor === "grey" )
+  if (topColor === "black" && bottomColor === "black" && leftColor ==="black" && rightColor === "black" )
   {
-      console.log("NO PATH AVAILABLE");
+      window.alert("NO PATH AVAILABLE");
       return 0;
   }
 }
@@ -241,7 +244,7 @@ this.insertAllVerticesAndEdges = function () {
   {
       switch (td_elements[i].style.backgroundColor)
       {
-          case "lightblue":
+          case "yellow":
                 verticies_count++;
                 this.insertVerticesAndEdgesHelper(td_elements,i);
                 break;
@@ -271,10 +274,10 @@ this.insertVerticesAndEdgesHelper = function (verticies, startPoint) {
   var checkBottom = true;
   var checkLeft   = true;
   var checkRight  = true;
-  var topColor    = "grey";
-  var bottomColor = "grey";
-  var leftColor   = "grey";
-  var rightColor  = "grey";
+  var topColor    = "black";
+  var bottomColor = "black";
+  var leftColor   = "black";
+  var rightColor  = "black";
 
   if ( ( startPoint % this.width ) == 0)
       checkLeft = false;
@@ -297,16 +300,16 @@ this.insertVerticesAndEdgesHelper = function (verticies, startPoint) {
       bottomColor = verticies[bottom].style.backgroundColor;
 
 
-  if ( checkTop && topColor === "lightblue" ) 
+  if ( checkTop && topColor === "yellow" ) 
       this.graph.addEdge(verticies[startPoint].getAttribute("id"),verticies[top].getAttribute("id"));
  
-  if ( checkBottom && bottomColor === "lightblue") 
+  if ( checkBottom && bottomColor === "yellow") 
       this.graph.addEdge(verticies[startPoint].getAttribute("id"),verticies[bottom].getAttribute("id"));
 
-  if (checkLeft && leftColor === "lightblue"  ) 
+  if (checkLeft && leftColor === "yellow"  ) 
       this.graph.addEdge(verticies[startPoint].getAttribute("id"),verticies[left].getAttribute("id"));
 
-  if (checkRight && rightColor === "lightblue" ) 
+  if (checkRight && rightColor === "yellow" ) 
       this.graph.addEdge(verticies[startPoint].getAttribute("id"),verticies[right].getAttribute("id"));
     
 }

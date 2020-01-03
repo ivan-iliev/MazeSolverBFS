@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function() {
     var gg = new GridGenerator("parent_div",50,50);
     gg.createGrid();
@@ -15,8 +12,8 @@ $(document).ready(function() {
                 $(this).css({
                     backgroundColor: gg.getColor()
                 });
-                console.log(pointerEventToXY(e)); // will return obj ..kind of {x:20,y:40}
-                // $(this).unbind();
+                console.log(pointerEventToXY(e)); 
+            
                 if(gg.isStart())
                 {
                     $(this).unbind();

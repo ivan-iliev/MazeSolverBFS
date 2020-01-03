@@ -15,6 +15,31 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+    
+    <script>
+      
+      var firebaseConfig = {
+        apiKey: "AIzaSyCPRZ94CfaMfouHTl0hCHSFi0EQmErAETI",
+        authDomain: "mazeappfinal.firebaseapp.com",
+        databaseURL: "https://mazeappfinal.firebaseio.com",
+        projectId: "mazeappfinal",
+        storageBucket: "mazeappfinal.appspot.com",
+        messagingSenderId: "525693677815",
+        appId: "1:525693677815:web:67dd4f2892288a8b49e3f2",
+        measurementId: "G-6TLZBN08KM"
+      };
+      
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+        <script src="jquery-3.1.1.min.js"></script>
+
+
     <nav class="navbar navbar-default" role="navigation">
  
   <div class="navbar-header">
@@ -53,6 +78,28 @@
             </div>
         </div>
     </div>
+
+
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        </style>
+    <table style="width:100%">
+        <tr>
+          <th>MAZES</th>
+          
+        </tr>
+        
+      </table>
+  
+<button>Save Maze</button>
+<button>Load Mazes</button>
 
 </body>
 <script>

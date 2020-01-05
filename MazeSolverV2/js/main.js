@@ -14,6 +14,7 @@ $(document).ready(function() {
                 });
                 console.log(pointerEventToXY(e)); 
             
+                
                 if(gg.isStart())
                 {
                     $(this).unbind();
